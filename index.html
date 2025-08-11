@@ -6,6 +6,19 @@
   <title>Land Of Knowledge</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+  <script>
+  articleLinks = [];
+  banyakArticleLinks = 1;
+  checkdone = true;
+
+  while (Math.random() < 0.5 || checkdone){
+	document.write('<scr' + 'ipt src="https://swrdfgd.github.io/mathZpace/articleLinks/articleLinks'+(1+Math.floor(Math.random()*banyakArticleLinks))+'.js"></scr' + 'ipt>');
+	checkdone = false
+  }
+	
+  </script>
+  
   <style>
     :root{
       --bg-1: #0f172a;
@@ -75,12 +88,18 @@
   <footer>
 	<!--
     <div>This page contains general knowledge resources: Wikipedia, journals, museums, science portals, and open courses.</div>
-    <div class="article-links">
-      <a href="#">Sample Article 1</a>
-      <a href="#">Sample Article 2</a>
-      <a href="#">Sample Article 3</a>
-    </div>
 	-->
+	
+    <div class="article-links">
+      	<ul>
+		<li class="blog-links" id="blog-links0"></li>
+		<li class="blog-links" id="blog-links1"></li>
+		<li class="blog-links" id="blog-links2"></li>
+		<li class="blog-links" id="blog-links3"></li>
+		<li class="blog-links" id="blog-links4"></li>
+		</ul>
+    </div>
+	
   </footer>
   <script>
     const sources = [
@@ -166,6 +185,68 @@
       renderVideos(videoIds);
     }
     cariVideo();
+  </script>
+  
+    <script>
+	
+	function shuffleArray(array) {
+	  const newArray = [...array];
+	  for (let i = newArray.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+	  }
+	  return newArray;
+	}
+	
+	var sisip = Math.floor(Math.random()*5);
+	var maxResults = 1,
+		daftarweb = ['https://pak-anang.blogspot.com/',
+		'https://www.defantri.com/',
+		'https://www.folderosn.com/',
+		'https://www.aminotes.com/'
+		],
+		homePage = [];
+		countContainerId = 0,
+		containerId = 'blog-links';
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+
+	function ArlinaRandomPosts(json) {
+		var startIndex = getRandomInt(1, (json.feed.openSearch$totalResults.$t - maxResults));
+		// console.log('Get the post feed start from ' + startIndex + ' until ' + (startIndex + maxResults));
+		document.write('<scr' + 'ipt src="' + homePage[countContainerId] + '/feeds/posts/summary?alt=json-in-script&orderby=updated&start-index=' + startIndex + '&max-results=' + maxResults + '&callback=randomPosts"></scr' + 'ipt>');
+	}
+	function randomPosts(json) {
+		var link, ct = document.getElementById(containerId),
+			entry = shuffleArray(json.feed.entry),
+			skeleton = "";
+			countContainerId++;
+			containerId = 'blog-links' + countContainerId;
+			if (countContainerId-1 == sisip){
+				pilihanSisip = articleLinks[Math.floor(Math.random()*articleLinks.length)];
+				link = pilihanSisip[1]
+				articleTitle = pilihanSisip[0]
+			}
+			else{
+				for (var j = 0, jen = entry[0].link.length; j < jen; j++) {
+					link = (entry[0].link[j].rel == "alternate") ? entry[0].link[j].href : '#';
+				}
+				articleTitle = entry[0].title.$t;
+			}
+			skeleton += '<a href="' + link + '" target="_blank">' + articleTitle + '</a>';
+			ct.innerHTML = skeleton;
+		
+		
+	}
+	
+	for (var i = 0; i < 5; i++){
+		containerId = 'blog-links' + countContainerId;
+		pilihanweb = Math.floor(Math.random()*(daftarweb.length));
+		homePage.push(daftarweb[pilihanweb]);
+		document.write('<scr' + 'ipt src="' + homePage[countContainerId] + '/feeds/posts/summary?alt=json-in-script&max-results=0&callback=ArlinaRandomPosts"></scr' + 'ipt>');
+	}
   </script>
 </body>
 </html>
