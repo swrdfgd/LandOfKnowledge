@@ -104,7 +104,7 @@
   </footer>
   <script>
     const sources = [
-      {title: 'Wikipedia (random)', url: 'https://en.wikipedia.org/wiki/Special:Random'},
+      {title: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Special:Random'},
       {title: 'Britannica', url: 'https://www.britannica.com/'},
       {title: 'National Geographic', url: 'https://www.nationalgeographic.com/'},
       {title: 'NASA', url: 'https://www.nasa.gov/'},
@@ -112,6 +112,7 @@
       {title: 'Google Scholar', url: 'https://scholar.google.com/'},
       {title: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/'},
 	  {title: 'Education.com', url: 'https://www.education.com/'},
+	  {title: "MPI", url: `http://repository.mediapenerbitindonesia.com/${1+Math.floor(Math.random()*517)}` },
     ];
     function el(tag, attrs={}, txt=''){const e=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(txt) e.textContent=txt;return e;}
     const grid=document.getElementById('links-grid');
