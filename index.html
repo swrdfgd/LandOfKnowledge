@@ -70,11 +70,12 @@
     <aside class="sidebar">
       <div class="link-list">
 		<a class="link-item" href="https://swrdfgd.github.io/KiankoLand/" target="_blank">Kianko Land</a>
+		<a class="link-item" href="#" onclick="generateLinks(14,'')">Omni</a>
+		<a class="link-item" href="#" onclick="generateLinks(14,'mathematics')">Mathematics</a>
         <a class="link-item" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Wikipedia</a>
         <a class="link-item" href="https://www.britannica.com/" target="_blank">Britannica</a>
         <a class="link-item" href="https://www.nationalgeographic.com/" target="_blank">National Geographic</a>
         <a class="link-item" href="https://www.nasa.gov/" target="_blank">NASA</a>
-        <a class="link-item" href="https://arxiv.org/" target="_blank">arXiv</a>
         <a class="link-item" href="https://scholar.google.com/" target="_blank">Google Scholar</a>
         <a class="link-item" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed</a>
       </div>
@@ -103,22 +104,47 @@
 	
   </footer>
   <script>
-    const sources = [
-      {title: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Special:Random'},
-      {title: 'Britannica', url: 'https://www.britannica.com/'},
-      {title: 'National Geographic', url: 'https://www.nationalgeographic.com/'},
-      {title: 'NASA', url: 'https://www.nasa.gov/'},
-      {title: 'arXiv', url: 'https://arxiv.org/'},
-      {title: 'Google Scholar', url: 'https://scholar.google.com/'},
-      {title: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/'},
-	  {title: 'Education.com', url: 'https://www.education.com/'},
-	  {title: "MPI", url: `http://repository.mediapenerbitindonesia.com/${1+Math.floor(Math.random()*517)}` },
-    ];
+	let sources = [];
+	
+	function resourceRefresh(cat){
+		if (cat == ''){
+			sources = [
+			  {title: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Special:Random'},
+			  {title: 'Britannica', url: 'https://www.britannica.com/'},
+			  {title: 'National Geographic', url: 'https://www.nationalgeographic.com/'},
+			  {title: 'NASA', url: 'https://www.nasa.gov/'},
+			  {title: 'arXiv', url: 'https://arxiv.org/'},
+			  {title: 'Google Scholar', url: 'https://scholar.google.com/'},
+			  {title: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/'},
+			  {title: 'Education.com', url: 'https://www.education.com/'},
+			  {title: "MPI", url: `http://repository.mediapenerbitindonesia.com/${1+Math.floor(Math.random()*517)}` },
+			  {title: 'mathZpace', url: 'https://swrdfgd.github.io/mathZpace/'},
+			];
+		return
+		}
+		
+		if (cat == 'mathematics'){
+			sources = [
+			  {title: 'mathZpace', url: 'https://swrdfgd.github.io/mathZpace/'},
+			];
+			return
+		}
+	}
+	
     function el(tag, attrs={}, txt=''){const e=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));if(txt) e.textContent=txt;return e;}
     const grid=document.getElementById('links-grid');
     function clearGrid(){grid.innerHTML='';}
     function makeCard(title,url){const c=el('article',{class:'card'});const top=el('div');top.appendChild(el('div',{style:'font-weight:700;font-size:0.98rem'},title));const a=el('a',{href:url,target:'_blank',rel:'noopener'},'Open →');c.appendChild(top);c.appendChild(a);return c;}
-    function generateLinks(count=12){clearGrid();for(let i=0;i<count;i++){const pick=sources[Math.floor(Math.random()*sources.length)];const card=makeCard(pick.title,pick.url);grid.appendChild(card);}}
+    
+	function generateLinks(count=12,cat=''){
+		clearGrid();
+		resourceRefresh(cat)
+		count = Math.min(count,sources.length);
+		for(let i=0;i<count;i++){
+			const pick=sources[Math.floor(Math.random()*sources.length)];
+			const card=makeCard(pick.title,pick.url);grid.appendChild(card);
+		}
+	}
     generateLinks();
 
     const videoContainer=document.getElementById("videoContainer");
