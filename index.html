@@ -70,7 +70,11 @@
     <aside class="sidebar">
       <div class="link-list">
 		<a class="link-item" href="https://swrdfgd.github.io/KiankoLand/" target="_blank">Kianko Land</a>
-		<a class="link-item" href="#" onclick="generateLinks(12,'')">Omni</a>
+		<a id="omnibutton" class="link-item" href="#" onclick="generateLinks(12,'')">Omni</a>
+		<script>
+			const omnis = ['Omni', 'Jack', 'All', 'All Trades', 'Jack of All Trades', 'Multi', 'Multitalent', 'General', 'Generalist','Versatile', 'Polymath', 'Universal', 'All-rounder', 'Eclectic','Adaptable', 'Broad-based', 'Multipurpose', 'Protean', 'Cross-functional', 'Resourceful', 'Hybrid','Broad Knowledge'];
+			document.getElementById('omnibutton').innerHTML = omnis[Math.floor(Math.random()*omnis.length)];
+		</script>
 		<a class="link-item" href="#" onclick="generateLinks(12,'mathematics')">Mathematics</a>
         <a class="link-item" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Wikipedia</a>
         <a class="link-item" href="https://www.britannica.com/" target="_blank">Britannica</a>
