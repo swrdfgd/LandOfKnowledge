@@ -8,6 +8,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   
   <script>
+	categories =
+	['Mathematics',
+	'Language',
+	]
+  </script>
+  
+  <script>
   articleLinks = [];
   banyakArticleLinks = 1;
   checkdone = true;
@@ -75,8 +82,8 @@
 			const omnis = ['Omni', 'Jack', 'All', 'All Trades', 'Jack of All Trades', 'Multi', 'Multitalent', 'General', 'Generalist','Versatile', 'Polymath', 'Universal', 'All-rounder', 'Eclectic','Adaptable', 'Broad-based', 'Multipurpose', 'Protean', 'Cross-functional', 'Resourceful', 'Hybrid','Broad Knowledge'];
 			document.getElementById('omnibutton').innerHTML = omnis[Math.floor(Math.random()*omnis.length)];
 		</script>
-		<a class="link-item" href="#" onclick="generateLinks(12,'mathematics')">Mathematics</a>
-        <a class="link-item" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Wikipedia</a>
+		<span id="Cat1"><a class="link-item" href="#" onclick="generateLinks(12,'Mathematics')">Mathematics</a></span>
+        <span id="Cat2"><a class="link-item" href="#" onclick="generateLinks(12,'Language')">Language</a></span>
         <a class="link-item" href="https://www.britannica.com/" target="_blank">Britannica</a>
         <a class="link-item" href="https://www.nationalgeographic.com/" target="_blank">National Geographic</a>
         <a class="link-item" href="https://www.nasa.gov/" target="_blank">NASA</a>
@@ -129,12 +136,13 @@
 			  {title: 'Random Website Lists', url: 'https://swrdfgd.github.io/RandomWebsite/'},			  
 			  {title: 'Random Links', url: 'https://swrdfgd.github.io/RandomLinks/'},			  
 			  {title: 'Atlantis Press', url: 'https://www.atlantis-press.com/'},			  
-			  {title: 'CORE', url: 'https://core.ac.uk/'},			  
+			  {title: 'CORE', url: 'https://core.ac.uk/'},	
+			  {title: "JAMA Network", url: `https://jamanetwork.com/journals/jamaophthalmology/article-abstract/${1+Math.floor(Math.random()*621197)}` },			  
 			];
 		return
 		}
 		
-		if (cat == 'mathematics'){
+		if (cat == 'Mathematics'){
 			sources = [
 			  {title: 'mathZpace', url: 'https://swrdfgd.github.io/mathZpace/'},
 			];
