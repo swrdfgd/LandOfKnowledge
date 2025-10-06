@@ -212,6 +212,27 @@
         });
       });
     }
+	
+	async function updateSearchLinks() {
+	  // pastikan daftarKata sudah terisi
+	  if (daftarKata.length === 0) await tambahKataDariWikipediaRandom();
+
+	  // ambil semua elemen <a>
+	  const allLinks = document.querySelectorAll('a');
+
+	  allLinks.forEach(a => {
+		const href = a.getAttribute('href') || '';
+		// deteksi jika link springer atau link yang mengandung 'search?'
+		if (href.includes('springer') || href.includes('search?')) {
+		  const randomWord = daftarKata[Math.floor(Math.random() * daftarKata.length)] || 'science';
+		  const newHref = `https://link.springer.com/search?new-search=true&query=${encodeURIComponent(randomWord)}`;
+		  a.setAttribute('href', newHref);
+		}
+	  });
+	}
+	
+
+	
     async function ambilRandomVideoId(apiKey){
       let keyword='';
       while(Math.random()<1/2||keyword.length<3){
@@ -241,7 +262,7 @@
       }
       renderVideos(videoIds);
     }
-    cariVideo();
+	cariVideo().then(updateSearchLinks);
   </script>
   
     <script>
