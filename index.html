@@ -90,8 +90,8 @@
 			document.getElementById('omnibutton').innerHTML = omnis[Math.floor(Math.random()*omnis.length)];
 		</script>
 		<a id ="Cat1" class="link-item" href="#" onclick="generateLinks(12,'Mathematics')">Mathematics</a>
-        <!--<span id="Cat2"><a class="link-item" href="#" onclick="generateLinks(12,'Language')">Language</a></span>-->
-        <a class="link-item" href="https://www.britannica.com/" target="_blank">Britannica</a>
+		<a id ="Cat2" class="link-item" href="#" onclick="generateLinks(12,'Biology')">Biology</a>
+        <!--<span id="Cat3"><a class="link-item" href="#" onclick="generateLinks(12,'Language')">Language</a></span>-->
         <a class="link-item" href="https://www.nationalgeographic.com/" target="_blank">National Geographic</a>
         <a class="link-item" href="https://www.nasa.gov/" target="_blank">NASA</a>
         <a class="link-item" href="https://scholar.google.com/" target="_blank">Google Scholar</a>
@@ -148,6 +148,7 @@
 			  {title: "JAMA Network", url: `https://jamanetwork.com/journals/jamaophthalmology/article-abstract/${1+Math.floor(Math.random()*621197)}` },			  		  
 			  {title: "SpringerLink", url: `https://link.springer.com/` },			  		  
 			  {title: "Zenius Blog", url: `https://www.zenius.net/blog/` },			  		  
+			  {title: "USDA Plants Database", url: `https://plants.usda.gov/` },			  		  
 			];
 		return
 		}
@@ -155,6 +156,13 @@
 		if (cat == 'Mathematics'){
 			sources = [
 			  {title: 'mathZpace', url: 'https://swrdfgd.github.io/mathZpace/'},
+			];
+			return
+		}
+		
+		if (cat == 'Biology'){
+			sources = [
+			  {title: "USDA Plants Database", url: `https://plants.usda.gov/` },
 			];
 			return
 		}
