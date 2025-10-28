@@ -91,6 +91,7 @@
 		</script>
 		<a id ="Cat1" class="link-item" href="#" onclick="generateLinks(12,'Mathematics')">Mathematics</a>
 		<a id ="Cat2" class="link-item" href="#" onclick="generateLinks(12,'Biology')">Biology</a>
+		<a id ="Cat3" class="link-item" href="#" onclick="generateLinks(12,'Linguistics')">Linguistics</a>
         <!--<span id="Cat3"><a class="link-item" href="#" onclick="generateLinks(12,'Language')">Language</a></span>-->
         <a class="link-item" href="https://www.nationalgeographic.com/" target="_blank">National Geographic</a>
         <a class="link-item" href="https://www.nasa.gov/" target="_blank">NASA</a>
@@ -151,6 +152,7 @@
 			  {title: "USDA Plants Database", url: `https://plants.usda.gov/` },			  		  
 			  {title: "Springer Nature", url: `https://www.springernature.com/` },	
 			  {title: "Universitas Hasanuddin Repository", url: `https://repository.unhas.ac.id/id/eprint/${1+Math.floor(Math.random()*27688)}` },
+			  {title: "OneLook Thesaurus", url: `https://onelook.com/thesaurus/` },
 			];
 		return
 		}
@@ -165,6 +167,12 @@
 		if (cat == 'Biology'){
 			sources = [
 			  {title: "USDA Plants Database", url: `https://plants.usda.gov/` },
+			];
+			return
+		}
+		if (cat == 'Linguistics'){
+			sources = [
+			  {title: "OneLook Thesaurus", url: `https://onelook.com/thesaurus/` },
 			];
 			return
 		}
