@@ -156,6 +156,7 @@
 			  {title: "Jurnal Teknologi Mineral dan Batubara", url: `https://jurnal.tekmira.esdm.go.id/index.php/minerba` },
 			  {title: "Repository UIN Sumatera Utara", url: `http://repository.uinsu.ac.id/${1+Math.floor(Math.random()*1210)}` },
 			  {title: "Random StackExchange Question", url: `https://swrdfgd.github.io/RandomStackQuestion/` },
+			  {title: "U.S. Fish and Wildlife Service", url: `https://www.fws.gov/` },
 			];
 		return
 		}
@@ -170,6 +171,7 @@
 		if (cat == 'Biology'){
 			sources = [
 			  {title: "USDA Plants Database", url: `https://plants.usda.gov/` },
+			  {title: "U.S. Fish and Wildlife Service", url: `https://www.fws.gov/` },
 			];
 			return
 		}
@@ -245,9 +247,14 @@
 	  allLinks.forEach(a => {
 		const href = a.getAttribute('href') || '';
 		// deteksi jika link springer atau link yang mengandung 'search?'
-		if (href.includes('springer') || href.includes('search?')) {
-		  const randomWord = daftarKata[Math.floor(Math.random() * daftarKata.length)] || 'science';
+		if (href.includes('springer.com')) {
+		  const randomWord = daftarKata[Math.floor(Math.random() * daftarKata.length)];
 		  const newHref = `https://link.springer.com/search?new-search=true&query=${encodeURIComponent(randomWord)}`;
+		  a.setAttribute('href', newHref);
+		}
+		if (href.includes('https://www.fws.gov/')) {
+		  const randomWord = daftarKata[Math.floor(Math.random() * daftarKata.length)];
+		  const newHref = `https://www.fws.gov/search?$keywords=${encodeURIComponent(randomWord)}`;
 		  a.setAttribute('href', newHref);
 		}
 	  });
